@@ -24,7 +24,7 @@ class Scene(object):
     def __init__(self):
         self.nodes = []
 
-    def add_node(self):
+    def add_node(self, node):
         self.nodes.append(node)
 
 class DialogueNode(object):
@@ -38,7 +38,7 @@ class DialogueNode(object):
         self.branches = {}  ## possible outcomes based on what you say linked to the node they bring you to
 
     def load_node(self):
-        filename = "scenes/%s.txt" % (node_id)
+        filename = "scenes/%s.txt" % (self.node_id)
         f = open(filename, mode='r')
         print(f)
 
@@ -48,7 +48,7 @@ class DialogueNode(object):
     def add_branch(self, response, outcome_node):
         self.branches[response] = outcome_node
 
-test_1():
+def test_1():
     dnode = DialogueNode(node_id="node-00-00-00-01")
 
 if __name__ == "__main__":
