@@ -29,28 +29,36 @@ class Scene(object):
 
 class DialogueNode(object):
     def __init__(self, node_id = ""):
+        self.text = ""  ## What the character is currently saying
         if node_id:  #Initialize a non-blank node id
             self.node_id = node_id
             self.load()
         elif node_id == "":  # Default
             self.node_id = -1  ## Defaults to -1 for an uninitialized Dialogue Nodule
-        self.text = ""  ## What the character is currently saying
         self.branches = {}  ## possible outcomes based on what you say linked to the node they bring you to
 
     def load(self):
-        filename = "scenes/%s" % (self.node_id)
+        filename = "scenes/%s.txt" % (self.node_id)
         f = open(filename, mode='r')
+        _data = ""
         for line in f:
-            print (line)
+            _data = _data+line
+        #print ("data = %s" % (_data))
+        self.set_text(_data)
 
     def set_text(self, words):
-        self.text = str(words)
+        for line in words:
+            self.text = self.text+line
 
     def add_branch(self, response, outcome_node):
         self.branches[response] = outcome_node
 
+    def print_text(self):
+        print (self.text)
+
 def test_1():
-    dnode = DialogueNode(node_id="node-00-00-00-01.txt")
+    dnode = DialogueNode(node_id="node-00-00-00-01")
+    dnode.print_text()
 
 if __name__ == "__main__":
     test_1()
