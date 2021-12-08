@@ -24,7 +24,7 @@ class Scene(object):
     def __init__(self):
         self.nodes = []
 
-    def add_node(self):
+    def add_node(self, node):
         self.nodes.append(node)
 
 class DialogueNode(object):
@@ -37,10 +37,11 @@ class DialogueNode(object):
         self.text = ""  ## What the character is currently saying
         self.branches = {}  ## possible outcomes based on what you say linked to the node they bring you to
 
-    def load_node(self):
-        filename = "scenes/%s.txt" % (node_id)
+    def load(self):
+        filename = "scenes/%s" % (self.node_id)
         f = open(filename, mode='r')
-        print(f)
+        for line in f:
+            print (line)
 
     def set_text(self, words):
         self.text = str(words)
@@ -48,8 +49,8 @@ class DialogueNode(object):
     def add_branch(self, response, outcome_node):
         self.branches[response] = outcome_node
 
-test_1():
-    dnode = DialogueNode(node_id="node-00-00-00-01")
+def test_1():
+    dnode = DialogueNode(node_id="node-00-00-00-01.txt")
 
 if __name__ == "__main__":
     test_1()
