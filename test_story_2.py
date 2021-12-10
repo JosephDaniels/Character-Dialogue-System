@@ -24,7 +24,7 @@ b.text = """
 Alas, the little girl forgot the teachings of he mother and
 she suffer gastroenteris from eating raw cookie dough"""
 b.branches = [("She sticks a finger down he throat", 5),
-              ("She crys for help"), 5]
+              ("She crys for help", 5)]
 
 c = DN()
 c.node_id = 5
