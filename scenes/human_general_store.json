@@ -1,0 +1,16 @@
+{
+ 1 : {
+   "name": "A long long time ago...",
+   "text": "A little girl was walking in the woods when she saw a wolf",
+   "branches": [ ["What ", 2],
+                  ["who ", 3]]
+  },
+  
+  2: {
+    "name": "The nemesis arrives...",
+   "text": "A little girl was walking in the woods when she saw a wolf",
+   "branches": [ ["What ", 2],
+                  ["who ", 3]]
+  }
+
+}

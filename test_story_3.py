@@ -3,39 +3,51 @@ from character_dialogue import DialogueNode as DN
 # create a simple story
 # (it's incomplete but it gives the gist of how the data structure works- AW)
 
+# A modification of the original test story, now I'm just refactoring a bit - JV
 
 a = DN()
 a.node_id = 1
-a.name = "Once upon a time"
+a.name = "Beginning of the Game"
+a.character = "Narrator"
 a.text = """
-Once upon a time a litle girl was walking through the woods,
-and she stumbled upon  house made of gingerbread
+Hello there adventurer, welcome to Grassdale Village.
 """
 
 # branches are a pair of tuples consisting of ("choice_text", and the story_node_id it leads to)
-a.branches = [("She took a bite out of the house", 2),
-              ("She knocked on the door", 3),
-              ("'Oy! what am I supposed top do?", 4)]
+a.branches = [("Who are you?", 2),
+              ("Where am I?", 3),
+              ("What do I see?", 3)]
 
 b = DN()
 b.node_id = 2
-b.name = "It's poison you dolt!"
+b.character = "Narrator"
 b.text = """
-Alas, the little girl forgot the teachings of he mother and
-she suffer gastroenteris from eating raw cookie dough"""
-b.branches = [("She sticks a finger down he throat", 5),
-              ("She crys for help"), 5]
+I am just a ghostly voice in your head.
+"""
+b.branches = [("Where am I?", 3),
+              ("What do I see?", 3),]
 
 c = DN()
-c.node_id = 5
-c.name = "Game over man!"
-c.text = "Too late, she's dead"
-c.branches = []
+c.node_id = 3
+c.name = "Grassdale Village Description"
+c.character = "Narrator"
+c.text = """
+You find yourself in the village of Grassdale. 
+
+Laying on the gravel covered ground, you awaken staring up into the branches of a tree.
+ 
+Everything swirls around you as you slowly awaken.
+ 
+Your eyes slowly focus until you see the red orbs above you becoming juicy red apples.
+
+They shifts as the tree branch sways in the breeze.
+"""
+c.branches = [("Continue...", 5)]
 
 scenes = {
     1: a,
     2: b,
-    5: c
+    3: c
 }
 
 

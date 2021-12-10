@@ -1,4 +1,15 @@
-""" A system that handles character interactions and allows for intricate dialogue interaction trees. """
+""" A system that handles character interactions and allows for intricate dialogue interaction trees.
+
+The dialogue system although named after a conversation of two people, is designed to handle storytelling for a
+single player that might involve one ore more NPC characters.
+
+I would love to make a version in the future that allows multiple characters to respond but for now it's basically
+a visual novel with the inclusion of characters. I also thought of having certain moodles attached to certain nodes,
+but that's a future improvement...
+
+-JV
+
+"""
 
 class Dialogue_System(object):
     def __init__(self):
@@ -22,6 +33,9 @@ class Dialogue_System(object):
 
 class Scene(object):
     def __init__(self):
+        self.title = ""  ## Name of the scene e.g "Together at grandma's house"
+        self.description = ""  ## Brief summary of the scene "You are making cookies at Grandma's house"
+        self.characters = []  ## All the characters in the current scene
         self.nodes = []
 
     def add_node(self, node):
@@ -30,6 +44,7 @@ class Scene(object):
 class DialogueNode(object):
     def __init__(self, node_id = ""):
         self.text = ""  ## What the character is currently saying
+        self.character = ""  ## Has a name if this line is spoken by a specific character
         if node_id:  #Initialize a non-blank node id
             self.node_id = node_id
             self.load()
